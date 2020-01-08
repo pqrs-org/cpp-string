@@ -15,5 +15,6 @@ add_executable(
   test
   test_predicate.cpp
   test_trim.cpp
+  test_truncate.cpp
   test.cpp
 )

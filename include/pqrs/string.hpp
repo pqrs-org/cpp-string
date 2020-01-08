@@ -8,3 +8,4 @@
 
 #include "string/predicate.hpp"
 #include "string/trim.hpp"
+#include "string/truncate.hpp"
