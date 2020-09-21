@@ -32,6 +32,11 @@ TEST_CASE("trim_left_copy") {
     REQUIRE(pqrs::string::trim_left_copy(s) == "example  ");
     REQUIRE(s == "  example  ");
   }
+  {
+    std::string_view s("  example  ");
+    REQUIRE(pqrs::string::trim_left_copy(s) == "example  ");
+    REQUIRE(s == "  example  ");
+  }
 }
 
 TEST_CASE("trim_right_copy") {
@@ -40,11 +45,21 @@ TEST_CASE("trim_right_copy") {
     REQUIRE(pqrs::string::trim_right_copy(s) == "  example");
     REQUIRE(s == "  example  ");
   }
+  {
+    std::string_view s("  example  ");
+    REQUIRE(pqrs::string::trim_right_copy(s) == "  example");
+    REQUIRE(s == "  example  ");
+  }
 }
 
 TEST_CASE("trim_copy") {
   {
     std::string s("  example  ");
+    REQUIRE(pqrs::string::trim_copy(s) == "example");
+    REQUIRE(s == "  example  ");
+  }
+  {
+    std::string_view s("  example  ");
     REQUIRE(pqrs::string::trim_copy(s) == "example");
     REQUIRE(s == "  example  ");
   }
