@@ -19,6 +19,10 @@ TEST_CASE("starts_with") {
     REQUIRE(pqrs::string::starts_with(s, ""));
     REQUIRE(!pqrs::string::starts_with(s, "1"));
   }
+  {
+    std::string_view s("1234");
+    REQUIRE(pqrs::string::starts_with(s, "1"));
+  }
 }
 
 TEST_CASE("ends_with") {
@@ -37,5 +41,9 @@ TEST_CASE("ends_with") {
     std::string s("");
     REQUIRE(pqrs::string::ends_with(s, ""));
     REQUIRE(!pqrs::string::ends_with(s, "1"));
+  }
+  {
+    std::string_view s("1234");
+    REQUIRE(pqrs::string::ends_with(s, "4"));
   }
 }
