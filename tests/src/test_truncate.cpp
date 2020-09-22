@@ -15,4 +15,7 @@ TEST_CASE("truncate") {
   REQUIRE(pqrs::string::truncate("1234567890", 2) == "12");
   REQUIRE(pqrs::string::truncate("1234567890", 1) == "1");
   REQUIRE(pqrs::string::truncate("1234567890", 0) == "");
+
+  // string_view
+  REQUIRE(pqrs::string::truncate(std::string_view("1234567890"), 5) == "12...");
 }
