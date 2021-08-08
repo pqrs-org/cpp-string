@@ -18,4 +18,20 @@ TEST_CASE("truncate") {
 
   // string_view
   REQUIRE(pqrs::string::truncate(std::string_view("1234567890"), 5) == "12...");
+
+  // UTF-8
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 1) == "");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 2) == "");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 3) == "");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 4) == "...");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 5) == "...");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 6) == "...");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 7) == "🐱...");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 15) == "🐱🐱🐱...");
+  REQUIRE(pqrs::string::truncate("🐱🐱🐱🐱🐱", 30) == "🐱🐱🐱🐱🐱");
+
+  // Invalid UTF-8
+  REQUIRE(pqrs::string::truncate("hello\xe6world", 5) == "he...");
+  REQUIRE(pqrs::string::truncate("hello\xe6world", 10) == "hello...");
+  REQUIRE(pqrs::string::truncate("hello\xe6world", 12) == "hello�w...");
 }
