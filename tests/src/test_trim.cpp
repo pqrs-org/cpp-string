@@ -64,3 +64,19 @@ TEST_CASE("trim_copy") {
     REQUIRE(s == "  example  ");
   }
 }
+
+TEST_CASE("trim_invalid_right") {
+  {
+    std::string s("hello\xe6world");
+    pqrs::string::trim_invalid_right(s);
+    REQUIRE(s == "hello");
+  }
+}
+
+TEST_CASE("trim_invalid_right_copy") {
+  {
+    std::string s("hello\xe6world");
+    REQUIRE(pqrs::string::trim_invalid_right_copy(s) == "hello");
+    REQUIRE(s == "hello\xe6world");
+  }
+}
