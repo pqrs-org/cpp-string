@@ -5,6 +5,12 @@
 
 Utilities of `std::string`.
 
+## Requirements
+
+cpp-string depends the following classes.
+
+- [nemtrif/utfcpp](https://github.com/nemtrif/utfcpp).
+
 ## Install
 
 ### Using package manager
