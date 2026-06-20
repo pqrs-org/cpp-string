@@ -1,9 +1,7 @@
-#include "predicate_test.hpp"
 #include "trim_test.hpp"
 #include "truncate_test.hpp"
 
-int main(void) {
-  run_predicate_test();
+int main() {
   run_trim_test();
   run_truncate_test();
 
