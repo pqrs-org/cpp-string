@@ -5,12 +5,6 @@
 
 Utilities of `std::string`.
 
-## Requirements
-
-cpp-string depends the following classes.
-
-- [nemtrif/utfcpp](https://github.com/nemtrif/utfcpp).
-
 ## Install
 
-Copy `include/pqrs` and `vendor/vendor/include` directories into your include directory.
+Copy the `include/pqrs` directory into your include directory.

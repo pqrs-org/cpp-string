@@ -94,6 +94,21 @@ void run_trim_test() {
       pqrs::string::trim_invalid_right(s);
       expect(s == "hello");
     }
+    {
+      std::string s("hello🐱world");
+      pqrs::string::trim_invalid_right(s);
+      expect(s == "hello🐱world");
+    }
+    {
+      std::string s("hello\xed\xa0\x80world");
+      pqrs::string::trim_invalid_right(s);
+      expect(s == "hello");
+    }
+    {
+      std::string s("hello\xf4\x90\x80\x80world");
+      pqrs::string::trim_invalid_right(s);
+      expect(s == "hello");
+    }
   };
 
   "trim_invalid_right_copy"_test = [] {
