@@ -5,6 +5,7 @@
 // (See https://www.boost.org/LICENSE_1_0.txt)
 
 #include "trim.hpp"
+#include "utf8.hpp"
 #include <cstddef>
 #include <string>
 #include <string_view>
@@ -15,7 +16,7 @@ namespace pqrs::string {
                                           std::size_t length,
                                           std::string_view placeholder = "...") {
   // Replace invalid character to ensure no invalid characters until the end of string before create substring.
-  auto valid_string = impl::replace_invalid_utf8(s);
+  auto valid_string = replace_invalid_utf8(s);
 
   if (valid_string.length() <= length ||
       length <= placeholder.length()) {

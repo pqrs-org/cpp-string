@@ -8,3 +8,4 @@
 
 #include "string/trim.hpp"
 #include "string/truncate.hpp"
+#include "string/utf8.hpp"

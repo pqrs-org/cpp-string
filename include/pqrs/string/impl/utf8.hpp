@@ -5,7 +5,6 @@
 // (See https://www.boost.org/LICENSE_1_0.txt)
 
 #include <cstddef>
-#include <string>
 #include <string_view>
 
 namespace pqrs::string::impl {
@@ -97,32 +96,6 @@ struct utf8_sequence {
   }
 
   return std::string_view::npos;
-}
-
-[[nodiscard]] inline std::string replace_invalid_utf8(std::string_view s) {
-  constexpr std::string_view replacement = "\xef\xbf\xbd";
-
-  std::string result;
-  result.reserve(s.size());
-
-  std::size_t position = 0;
-  std::size_t valid_sequence_start = 0;
-  while (position < s.size()) {
-    const auto sequence = inspect_utf8_sequence(s, position);
-    if (sequence.valid) {
-      position += sequence.length;
-      continue;
-    }
-
-    result.append(s.substr(valid_sequence_start,
-                           position - valid_sequence_start));
-    result.append(replacement);
-    position += sequence.length;
-    valid_sequence_start = position;
-  }
-
-  result.append(s.substr(valid_sequence_start));
-  return result;
 }
 
 } // namespace pqrs::string::impl
